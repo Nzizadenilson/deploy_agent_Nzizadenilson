@@ -3,6 +3,13 @@
 #User enters input
 echo "Enter input:"
 read input
+#Check if python is installed
+if python3 --version; then
+        echo "Python3 is installed"
+else
+ echo "Warning!Python3 not installed"
+ exit 1
+fi
 #trapping signal
 #Define cleanup function
 cleanup() {
@@ -100,11 +107,34 @@ cat <<EOF > reports.log
 EOF
 cd ..
 #Update the attendance thresholds
-read -p "Update warning and failure threshold: " warning failure
-echo "warning: $warning"
-echo "failure: $failure"
+while true; do
+    read -p "Update warning and failure threshold: " warning failure
+    
+    # Check if both inputs are numeric
+    if [[ "$warning" =~ ^[0-9]+$ ]] && [[ "$failure" =~ ^[0-9]+$ ]]; then
+        echo "warning: $warning"
+        echo "failure: $failure"
+        break
+    else
+        echo "Error: Please enter numeric values only"
+    fi
+done
 
 #Edit config.json file
 sed -i "s/\"warning\": [0-9]\+/\"warning\": $warning/" Helpers/config.json
 sed -i "s/\"failure\": [0-9]\+/\"failure\": $failure/" Helpers/config.json
 echo "Updated thresholds in Helpers/config.json"
+#Run the python file
+python3 attendance_checker.py start
+#Ensuring the application directory structure is followed
+if [ -d "attendance_tracker_$input" ] && \
+   [ -f "attendance_tracker_$input/attendance_checker.py" ] && \
+   [ -d "attendnce_tracker_$input/Helpers" ] && \
+   [ -f "attendance_tracker_$input/Helpers/assets.csv" ] && \
+   [ -f "attendance_tracker_$input/Helpers/config.json" ] && \
+   [ -d "attendance_tracker_$input/reports" ] && \
+   [ -f "atendance_tracker_$input/reports/reports.log" ]; then
+echo "Directory structure followed"
+else
+	echo "Directory structure not followed"
+fi
