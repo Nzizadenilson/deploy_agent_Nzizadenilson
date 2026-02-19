@@ -129,7 +129,7 @@ python3 attendance_checker.py start
 #Ensuring the application directory structure is followed
 if [ -d "attendance_tracker_$input" ] && \
    [ -f "attendance_tracker_$input/attendance_checker.py" ] && \
-   [ -d "attendnce_tracker_$input/Helpers" ] && \
+   [ -d "attendance_tracker_$input/Helpers" ] && \
    [ -f "attendance_tracker_$input/Helpers/assets.csv" ] && \
    [ -f "attendance_tracker_$input/Helpers/config.json" ] && \
    [ -d "attendance_tracker_$input/reports" ] && \
