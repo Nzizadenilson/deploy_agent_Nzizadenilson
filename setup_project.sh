@@ -108,7 +108,7 @@ EOF
 cd ..
 #Update the attendance thresholds
 while true; do
-    read -p "Update warning and failure threshold: " warning failure
+    read -p "Update warning and failure threshold e.g(70 30): " warning failure
     
     # Check if both inputs are numeric
     if [[ "$warning" =~ ^[0-9]+$ ]] && [[ "$failure" =~ ^[0-9]+$ ]]; then
