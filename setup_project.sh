@@ -116,7 +116,7 @@ while true; do
         echo "failure: $failure"
         break
     else
-        echo "Error: Please enter numeric values only"
+        echo "Error: Please enter values which are numbers only"
     fi
 done
 
