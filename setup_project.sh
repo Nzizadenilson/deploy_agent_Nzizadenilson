@@ -133,7 +133,7 @@ if [ -d "attendance_tracker_$input" ] && \
    [ -f "attendance_tracker_$input/Helpers/assets.csv" ] && \
    [ -f "attendance_tracker_$input/Helpers/config.json" ] && \
    [ -d "attendance_tracker_$input/reports" ] && \
-   [ -f "atendance_tracker_$input/reports/reports.log" ]; then
+   [ -f "attendance_tracker_$input/reports/reports.log" ]; then
 echo "Directory structure followed"
 else
 	echo "Directory structure not followed"
