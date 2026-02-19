@@ -24,7 +24,7 @@ cleanup() {
         echo "No project folder found to archive."
     fi
 }
-
+trap  cleanup SIGINT
 #Creation of the tree
 mkdir attendance_tracker_$input
 cd attendance_tracker_$input
